@@ -9,9 +9,9 @@ export const configSchema = z.object({
       .default("info"),
     pretty: z.coerce.boolean().default(false),
   }),
-  OPENAI_API_KEY: z.string().min(5),
   DATABASE_URL: z.string().min(5),
   JWT_SECRET: z.string().min(5),
+  ALLOW_ORIGIN: z.string(),
 });
 
 export type IConfig = z.infer<typeof configSchema>;
@@ -27,9 +27,9 @@ export function loadConfig() {
       level: (process.env.LOG_LEVEL as ILevel) || "info",
       pretty: process.env.LOG_PRETTY === "true",
     },
-    OPENAI_API_KEY: process.env.OPENAI_API_KEY!,
     DATABASE_URL: process.env.DATABASE_URL!,
     JWT_SECRET: process.env.JWT_SECRET!,
+    ALLOW_ORIGIN: process.env.ALLOW_ORIGIN!,
   };
 
   const config = configSchema.parse(envConfig);

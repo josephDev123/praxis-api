@@ -18,7 +18,7 @@ export async function App(config: IConfig, db: PrismaClient, logger: Logger) {
   app.use(
     cors({
       credentials: true,
-      // origin: config.ALLOW_ORIGIN,
+      origin: config.ALLOW_ORIGIN,
     }),
   );
 
