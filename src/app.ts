@@ -12,7 +12,7 @@ import { requireAuthMiddleware } from "./lib/middleware/requireAuth.js";
 import cookieParser from "cookie-parser";
 
 export async function App(config: IConfig, db: PrismaClient, logger: Logger) {
-  let windowMs = 5 * 60 * 1000;
+  let windowMs = 10 * 60 * 1000;
   const app = express();
   app.use(express.json());
   app.use(
